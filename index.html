@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Buckz One Stop - Premium Car Wash in Kathu</title>
     <link rel="icon" href="assets/BuckzLogo.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -74,6 +75,13 @@
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
             border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.4s ease;
+        }
+
+        header.scrolled {
+            padding: 15px 50px;
+            background: rgba(0, 0, 0, 0.8);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
         }
 
         .logo {
@@ -81,6 +89,11 @@
             font-weight: bold;
             color: #fff;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
         }
 
         .logo span {
@@ -99,6 +112,7 @@
             font-weight: 600;
             transition: all 0.3s;
             position: relative;
+            padding: 8px 0;
         }
 
         nav a:hover {
@@ -131,20 +145,43 @@
             text-align: center;
             color: #fff;
             padding: 0 20px;
-            background: url('assets/hero1.png') no-repeat center center/cover;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), 
+                        url('./assets/hero1.png') no-repeat center center/cover;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(102, 126, 234, 0.3), rgba(118, 75, 162, 0.3));
+            z-index: 1;
         }
 
         .hero-content {
             position: relative;
             z-index: 10;
             max-width: 800px;
+            animation: fadeInUp 1s ease;
         }
 
         .hero h1 {
             font-size: 72px;
             margin-bottom: 20px;
-            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
             animation: fadeInUp 1s ease;
+            background: linear-gradient(to right, #ffd700, #ffffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            transition: all 0.5s ease;
+        }
+
+        .hero h1:hover {
+            transform: scale(1.05);
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
         }
 
         .hero p {
@@ -152,26 +189,51 @@
             margin-bottom: 40px;
             opacity: 0.95;
             animation: fadeInUp 1s ease 0.3s backwards;
+            transition: all 0.3s ease;
+        }
+
+        .hero p:hover {
+            transform: translateY(-5px);
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
         }
 
         .cta-button {
             display: inline-block;
             padding: 18px 45px;
-            background: #ffd700;
+            background: linear-gradient(45deg, #ffd700, #ffed4e);
             color: #333;
             text-decoration: none;
             border-radius: 50px;
             font-weight: bold;
             font-size: 18px;
-            transition: all 0.3s;
+            transition: all 0.4s ease;
             box-shadow: 0 10px 30px rgba(255, 215, 0, 0.3);
             animation: fadeInUp 1s ease 0.6s backwards;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #ffed4e, #ffd700);
+            transition: all 0.4s ease;
+            z-index: -1;
         }
 
         .cta-button:hover {
-            transform: translateY(-5px);
+            transform: translateY(-5px) scale(1.05);
             box-shadow: 0 15px 40px rgba(255, 215, 0, 0.5);
-            background: #ffed4e;
+            color: #000;
+        }
+
+        .cta-button:hover::before {
+            left: 0;
         }
 
         @keyframes fadeInUp {
@@ -198,6 +260,20 @@
             font-size: 48px;
             margin-bottom: 60px;
             color: #333;
+            position: relative;
+            padding-bottom: 20px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border-radius: 2px;
         }
 
         .services-grid {
@@ -213,8 +289,24 @@
             padding: 40px;
             border-radius: 20px;
             color: #fff;
-            transition: all 0.3s;
+            transition: all 0.4s ease;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+            opacity: 0;
+            transition: all 0.4s ease;
+            z-index: -1;
         }
 
         .service-card:hover {
@@ -222,20 +314,39 @@
             box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
         }
 
+        .service-card:hover::before {
+            opacity: 1;
+        }
+
         .service-icon {
             font-size: 48px;
             margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover .service-icon {
+            transform: scale(1.2) rotate(5deg);
         }
 
         .service-card h3 {
             font-size: 28px;
             margin-bottom: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover h3 {
+            color: #ffd700;
         }
 
         .service-card p {
             font-size: 16px;
             line-height: 1.6;
             opacity: 0.95;
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover p {
+            transform: translateY(-5px);
         }
 
         /* About Section */
@@ -256,6 +367,20 @@
         .about h2 {
             font-size: 48px;
             margin-bottom: 30px;
+            position: relative;
+            padding-bottom: 20px;
+        }
+
+        .about h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: #ffd700;
+            border-radius: 2px;
         }
 
         .about p {
@@ -263,6 +388,12 @@
             line-height: 1.8;
             margin-bottom: 20px;
             opacity: 0.95;
+            transition: all 0.3s ease;
+        }
+
+        .about p:hover {
+            transform: translateY(-5px);
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
         }
 
         .stats {
@@ -275,6 +406,11 @@
 
         .stat-item {
             text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-10px);
         }
 
         .stat-number {
@@ -282,11 +418,22 @@
             font-weight: bold;
             color: #ffd700;
             margin-bottom: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .stat-item:hover .stat-number {
+            transform: scale(1.2);
+            text-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
         }
 
         .stat-label {
             font-size: 18px;
             opacity: 0.9;
+            transition: all 0.3s ease;
+        }
+
+        .stat-item:hover .stat-label {
+            color: #ffd700;
         }
 
         /* Contact Section */
@@ -315,27 +462,63 @@
             border-radius: 15px;
             color: #fff;
             text-align: center;
-            transition: all 0.3s;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .contact-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+            opacity: 0;
+            transition: all 0.4s ease;
+            z-index: -1;
         }
 
         .contact-item:hover {
-            transform: translateY(-5px);
+            transform: translateY(-10px) scale(1.05);
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .contact-item:hover::before {
+            opacity: 1;
         }
 
         .contact-icon {
             font-size: 40px;
             margin-bottom: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover .contact-icon {
+            transform: scale(1.2) rotate(5deg);
+            color: #ffd700;
         }
 
         .contact-item h3 {
             font-size: 20px;
             margin-bottom: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover h3 {
+            color: #ffd700;
         }
 
         .contact-item p {
             font-size: 16px;
             opacity: 0.95;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover p {
+            transform: translateY(-5px);
         }
 
         /* Footer */
@@ -351,16 +534,28 @@
         .footer-content p {
             margin-bottom: 10px;
             opacity: 0.8;
+            transition: all 0.3s ease;
+        }
+
+        .footer-content p:hover {
+            opacity: 1;
+            transform: translateY(-3px);
         }
 
         .b-bbee {
             display: inline-block;
             margin-top: 20px;
             padding: 10px 25px;
-            background: #ffd700;
+            background: linear-gradient(45deg, #ffd700, #ffed4e);
             color: #333;
             border-radius: 25px;
             font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .b-bbee:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 10px 20px rgba(255, 215, 0, 0.3);
         }
 
         /* Responsive */
@@ -401,7 +596,7 @@
 </head>
 <body>
     <!-- Header -->
-    <header>
+    <header id="header">
         <div class="logo"><a><img src="assets/BuckzLogo.png" height="80" width="80"></a></div>
         <nav>
             <ul>
@@ -568,6 +763,16 @@
                     target.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
             });
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
         });
     </script>
 </body>

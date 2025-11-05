@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us - Buckz One Stop | Premium Car Wash in Kathu</title>
-        <link rel="icon" href="assets/BuckzLogo.png" type="image/x-icon">
-
+    <link rel="icon" href="assets/BuckzLogo.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -34,6 +34,13 @@
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
             border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.4s ease;
+        }
+
+        header.scrolled {
+            padding: 15px 50px;
+            background: rgba(0, 0, 0, 0.8);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
         }
 
         .logo {
@@ -41,6 +48,11 @@
             font-weight: bold;
             color: #fff;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
         }
 
         .logo span {
@@ -59,6 +71,7 @@
             font-weight: 600;
             transition: all 0.3s;
             position: relative;
+            padding: 8px 0;
         }
 
         nav a:hover {
@@ -93,6 +106,8 @@
             margin-top: 80px;
             position: relative;
             overflow: hidden;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), 
+                        url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') no-repeat center center/cover;
         }
 
         .page-header::before {
@@ -102,14 +117,30 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.3);
-            z-index: -1;
+            background: linear-gradient(45deg, rgba(102, 126, 234, 0.3), rgba(118, 75, 162, 0.3));
+            z-index: 1;
+        }
+
+        .page-header-content {
+            position: relative;
+            z-index: 10;
+            animation: fadeInUp 1s ease;
         }
 
         .page-header h1 {
             font-size: 64px;
             margin-bottom: 20px;
-            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+            animation: fadeInUp 1s ease;
+            background: linear-gradient(to right, #ffd700, #ffffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            transition: all 0.5s ease;
+        }
+
+        .page-header h1:hover {
+            transform: scale(1.05);
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
         }
 
         .page-header p {
@@ -117,6 +148,23 @@
             max-width: 700px;
             margin: 0 auto;
             opacity: 0.95;
+            transition: all 0.3s ease;
+        }
+
+        .page-header p:hover {
+            transform: translateY(-5px);
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         /* Contact Section */
@@ -132,6 +180,20 @@
             font-size: 48px;
             margin-bottom: 60px;
             color: #333;
+            position: relative;
+            padding-bottom: 20px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border-radius: 2px;
         }
 
         .contact-container {
@@ -154,25 +216,60 @@
             padding: 30px;
             border-radius: 15px;
             color: #fff;
-            transition: all 0.3s;
+            transition: all 0.4s ease;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .contact-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+            opacity: 0;
+            transition: all 0.4s ease;
+            z-index: -1;
         }
 
         .contact-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+        }
+
+        .contact-card:hover::before {
+            opacity: 1;
         }
 
         .contact-icon {
             font-size: 40px;
             margin-bottom: 15px;
             text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-card:hover .contact-icon {
+            transform: scale(1.2) rotate(5deg);
+            color: #ffd700;
         }
 
         .contact-card h3 {
             font-size: 24px;
             margin-bottom: 15px;
             text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-card:hover h3 {
+            color: #ffd700;
         }
 
         .contact-card p {
@@ -180,17 +277,27 @@
             text-align: center;
             opacity: 0.95;
             line-height: 1.8;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-card:hover p {
+            transform: translateY(-5px);
         }
 
         .contact-card a {
             color: #ffd700;
             text-decoration: none;
-            transition: all 0.3s;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 1;
         }
 
         .contact-card a:hover {
             color: #ffed4e;
             text-decoration: underline;
+            transform: translateY(-2px);
         }
 
         /* Operating Hours */
@@ -200,6 +307,31 @@
             border-radius: 15px;
             border-left: 5px solid #667eea;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hours-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            opacity: 0;
+            transition: all 0.4s ease;
+            z-index: 0;
+        }
+
+        .hours-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .hours-card:hover::before {
+            opacity: 0.05;
         }
 
         .hours-card h3 {
@@ -207,10 +339,19 @@
             margin-bottom: 20px;
             color: #333;
             text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hours-card:hover h3 {
+            color: #667eea;
         }
 
         .hours-list {
             list-style: none;
+            position: relative;
+            z-index: 1;
         }
 
         .hours-list li {
@@ -218,6 +359,12 @@
             justify-content: space-between;
             padding: 12px 0;
             border-bottom: 1px solid #eee;
+            transition: all 0.3s ease;
+        }
+
+        .hours-list li:hover {
+            transform: translateX(10px);
+            border-bottom-color: #667eea;
         }
 
         .hours-list li:last-child {
@@ -227,11 +374,22 @@
         .day {
             font-weight: 600;
             color: #333;
+            transition: all 0.3s ease;
+        }
+
+        .hours-list li:hover .day {
+            color: #667eea;
         }
 
         .time {
             color: #667eea;
             font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .hours-list li:hover .time {
+            color: #764ba2;
+            transform: scale(1.1);
         }
 
         /* Contact Form */
@@ -241,6 +399,12 @@
             border-radius: 20px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             border: 1px solid #f0f0f0;
+            transition: all 0.4s ease;
+        }
+
+        .contact-form-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
         }
 
         .contact-form-container h3 {
@@ -248,6 +412,11 @@
             margin-bottom: 30px;
             color: #333;
             text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .contact-form-container:hover h3 {
+            color: #667eea;
         }
 
         .form-group {
@@ -259,6 +428,11 @@
             margin-bottom: 8px;
             font-weight: 600;
             color: #333;
+            transition: all 0.3s ease;
+        }
+
+        .form-group:hover label {
+            color: #667eea;
         }
 
         .form-group input,
@@ -279,6 +453,7 @@
             outline: none;
             border-color: #667eea;
             box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+            transform: translateY(-2px);
         }
 
         .form-group textarea {
@@ -296,13 +471,32 @@
             font-size: 18px;
             font-weight: bold;
             cursor: pointer;
-            transition: all 0.3s;
+            transition: all 0.4s ease;
             box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .submit-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+            transition: all 0.4s ease;
+            z-index: -1;
         }
 
         .submit-btn:hover {
             transform: translateY(-3px);
             box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        .submit-btn:hover::before {
+            left: 0;
         }
 
         /* Map Section */
@@ -320,6 +514,15 @@
             text-align: center;
         }
 
+        .map-container p {
+            transition: all 0.3s ease;
+        }
+
+        .map-container p:hover {
+            transform: translateY(-5px);
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+        }
+
         .map-placeholder {
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
@@ -331,17 +534,57 @@
             justify-content: center;
             margin-top: 40px;
             border: 2px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .map-placeholder::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.15);
+            opacity: 0;
+            transition: all 0.4s ease;
+        }
+
+        .map-placeholder:hover {
+            transform: translateY(-10px) scale(1.02);
+            border-color: rgba(255, 255, 255, 0.4);
+        }
+
+        .map-placeholder:hover::before {
+            opacity: 1;
         }
 
         .map-icon {
             font-size: 80px;
             margin-bottom: 20px;
             opacity: 0.8;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 1;
+        }
+
+        .map-placeholder:hover .map-icon {
+            transform: scale(1.2) rotate(5deg);
+            opacity: 1;
+            color: #ffd700;
         }
 
         .map-placeholder h3 {
             font-size: 24px;
             margin-bottom: 15px;
+            position: relative;
+            z-index: 1;
+            transition: all 0.3s ease;
+        }
+
+        .map-placeholder:hover h3 {
+            color: #ffd700;
         }
 
         .map-placeholder p {
@@ -349,6 +592,13 @@
             opacity: 0.9;
             max-width: 600px;
             margin: 0 auto;
+            position: relative;
+            z-index: 1;
+            transition: all 0.3s ease;
+        }
+
+        .map-placeholder:hover p {
+            transform: translateY(-5px);
         }
 
         .directions-btn {
@@ -360,12 +610,32 @@
             text-decoration: none;
             border-radius: 50px;
             font-weight: bold;
-            transition: all 0.3s;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .directions-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #ffed4e, #ffd700);
+            transition: all 0.4s ease;
+            z-index: -1;
         }
 
         .directions-btn:hover {
             background: #ffed4e;
-            transform: translateY(-3px);
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 10px 20px rgba(255, 215, 0, 0.3);
+        }
+
+        .directions-btn:hover::before {
+            left: 0;
         }
 
         /* FAQ Section */
@@ -386,6 +656,12 @@
             border: 1px solid #e0e0e0;
             border-radius: 10px;
             overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            border-color: #667eea;
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.1);
         }
 
         .faq-question {
@@ -402,6 +678,7 @@
 
         .faq-question:hover {
             background: #e9ecef;
+            color: #667eea;
         }
 
         .faq-answer {
@@ -419,10 +696,12 @@
         .faq-toggle {
             font-size: 20px;
             transition: transform 0.3s;
+            color: #667eea;
         }
 
         .faq-toggle.active {
             transform: rotate(45deg);
+            color: #764ba2;
         }
 
         /* Footer */
@@ -438,16 +717,28 @@
         .footer-content p {
             margin-bottom: 10px;
             opacity: 0.8;
+            transition: all 0.3s ease;
+        }
+
+        .footer-content p:hover {
+            opacity: 1;
+            transform: translateY(-3px);
         }
 
         .b-bbee {
             display: inline-block;
             margin-top: 20px;
             padding: 10px 25px;
-            background: #ffd700;
+            background: linear-gradient(45deg, #ffd700, #ffed4e);
             color: #333;
             border-radius: 25px;
             font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .b-bbee:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 10px 20px rgba(255, 215, 0, 0.3);
         }
 
         /* Responsive */
@@ -493,7 +784,7 @@
 </head>
 <body>
     <!-- Header -->
-    <header>
+    <header id="header">
         <div class="logo"><a><img src="assets/BuckzLogo.png" height="80" width="80"></a></div>
         <nav>
             <ul>
@@ -507,7 +798,7 @@
 
     <!-- Page Header -->
     <section class="page-header">
-        <div>
+        <div class="page-header-content">
             <h1>Get In Touch</h1>
             <p>We're here to answer your questions and provide the best car care service in Kathu</p>
         </div>
@@ -697,6 +988,16 @@
                     target.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
             });
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
         });
 
         // FAQ Toggle

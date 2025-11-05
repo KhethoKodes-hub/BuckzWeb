@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Our Services - Buckz One Stop | Premium Car Wash in Kathu</title>
-        <link rel="icon" href="assets/BuckzLogo.png" type="image/x-icon">
-
+    <link rel="icon" href="assets/BuckzLogo.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -34,6 +34,13 @@
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
             border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.4s ease;
+        }
+
+        header.scrolled {
+            padding: 15px 50px;
+            background: rgba(0, 0, 0, 0.8);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
         }
 
         .logo {
@@ -41,6 +48,11 @@
             font-weight: bold;
             color: #fff;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
         }
 
         .logo span {
@@ -59,6 +71,7 @@
             font-weight: 600;
             transition: all 0.3s;
             position: relative;
+            padding: 8px 0;
         }
 
         nav a:hover {
@@ -93,6 +106,8 @@
             margin-top: 80px;
             position: relative;
             overflow: hidden;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), 
+                        url('./assets/hero2.png') no-repeat center center/cover;
         }
 
         .page-header::before {
@@ -102,14 +117,30 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.3);
-            z-index: -1;
+            background: linear-gradient(45deg, rgba(102, 126, 234, 0.3), rgba(118, 75, 162, 0.3));
+            z-index: 1;
+        }
+
+        .page-header-content {
+            position: relative;
+            z-index: 10;
+            animation: fadeInUp 1s ease;
         }
 
         .page-header h1 {
             font-size: 64px;
             margin-bottom: 20px;
-            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+            animation: fadeInUp 1s ease;
+            background: linear-gradient(to right, #ffd700, #ffffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            transition: all 0.5s ease;
+        }
+
+        .page-header h1:hover {
+            transform: scale(1.05);
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
         }
 
         .page-header p {
@@ -117,6 +148,23 @@
             max-width: 700px;
             margin: 0 auto;
             opacity: 0.95;
+            transition: all 0.3s ease;
+        }
+
+        .page-header p:hover {
+            transform: translateY(-5px);
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         /* Services Section */
@@ -132,6 +180,20 @@
             font-size: 48px;
             margin-bottom: 60px;
             color: #333;
+            position: relative;
+            padding-bottom: 20px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border-radius: 2px;
         }
 
         .services-grid {
@@ -147,12 +209,13 @@
             border-radius: 20px;
             overflow: hidden;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s;
+            transition: all 0.4s ease;
             border: 1px solid #f0f0f0;
+            position: relative;
         }
 
         .service-card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-10px) scale(1.02);
             box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
         }
 
@@ -161,16 +224,48 @@
             padding: 30px;
             text-align: center;
             color: #fff;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+            opacity: 0;
+            transition: all 0.4s ease;
+        }
+
+        .service-card:hover .service-header::before {
+            opacity: 1;
         }
 
         .service-icon {
             font-size: 60px;
             margin-bottom: 15px;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 1;
+        }
+
+        .service-card:hover .service-icon {
+            transform: scale(1.2) rotate(5deg);
         }
 
         .service-header h3 {
             font-size: 28px;
             margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover .service-header h3 {
+            color: #ffd700;
         }
 
         .service-status {
@@ -182,10 +277,20 @@
             font-size: 14px;
             font-weight: bold;
             margin-top: 10px;
+            position: relative;
+            z-index: 1;
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover .service-status {
+            transform: scale(1.1);
+            background: #ffed4e;
         }
 
         .service-body {
             padding: 30px;
+            position: relative;
+            z-index: 1;
         }
 
         .service-features {
@@ -197,6 +302,12 @@
             margin-bottom: 12px;
             padding-left: 25px;
             position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .service-features li:hover {
+            transform: translateX(10px);
+            color: #667eea;
         }
 
         .service-features li::before {
@@ -205,6 +316,12 @@
             left: 0;
             color: #667eea;
             font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .service-features li:hover::before {
+            transform: scale(1.5);
+            color: #764ba2;
         }
 
         .service-price {
@@ -213,6 +330,12 @@
             color: #667eea;
             text-align: center;
             margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover .service-price {
+            transform: scale(1.1);
+            color: #764ba2;
         }
 
         .service-cta {
@@ -226,19 +349,43 @@
             font-size: 16px;
             font-weight: bold;
             cursor: pointer;
-            transition: all 0.3s;
+            transition: all 0.4s ease;
             text-align: center;
             text-decoration: none;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .service-cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #5a6fd8, #667eea);
+            transition: all 0.4s ease;
+            z-index: -1;
         }
 
         .service-cta:hover {
-            background: #5a6fd8;
-            transform: translateY(-2px);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .service-cta:hover::before {
+            left: 0;
         }
 
         .service-cta.coming-soon {
             background: #95a3d4;
             cursor: not-allowed;
+        }
+
+        .service-cta.coming-soon:hover {
+            transform: none;
+            box-shadow: none;
         }
 
         /* Service Packages */
@@ -264,19 +411,41 @@
             padding: 40px;
             border-radius: 20px;
             text-align: center;
-            transition: all 0.3s;
+            transition: all 0.4s ease;
             border: 1px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .package-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.15);
+            opacity: 0;
+            transition: all 0.4s ease;
         }
 
         .package-card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-10px) scale(1.02);
             background: rgba(255, 255, 255, 0.15);
+        }
+
+        .package-card:hover::before {
+            opacity: 1;
         }
 
         .package-card.popular {
             background: rgba(255, 255, 255, 0.2);
             position: relative;
             transform: scale(1.05);
+        }
+
+        .package-card.popular:hover {
+            transform: translateY(-10px) scale(1.07);
         }
 
         .popular-badge {
@@ -290,16 +459,37 @@
             border-radius: 20px;
             font-weight: bold;
             font-size: 14px;
+            transition: all 0.3s ease;
+            z-index: 2;
+        }
+
+        .package-card:hover .popular-badge {
+            transform: translateX(-50%) scale(1.1);
         }
 
         .package-icon {
             font-size: 50px;
             margin-bottom: 20px;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 1;
+        }
+
+        .package-card:hover .package-icon {
+            transform: scale(1.2) rotate(5deg);
+            color: #ffd700;
         }
 
         .package-card h3 {
             font-size: 28px;
             margin-bottom: 15px;
+            position: relative;
+            z-index: 1;
+            transition: all 0.3s ease;
+        }
+
+        .package-card:hover h3 {
+            color: #ffd700;
         }
 
         .package-price {
@@ -307,6 +497,14 @@
             font-weight: bold;
             margin: 20px 0;
             color: #ffd700;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 1;
+        }
+
+        .package-card:hover .package-price {
+            transform: scale(1.1);
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
         }
 
         .package-features {
@@ -319,6 +517,12 @@
             margin-bottom: 15px;
             padding-left: 30px;
             position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .package-features li:hover {
+            transform: translateX(10px);
+            color: #ffd700;
         }
 
         .package-features li::before {
@@ -328,6 +532,11 @@
             color: #ffd700;
             font-weight: bold;
             font-size: 18px;
+            transition: all 0.3s ease;
+        }
+
+        .package-features li:hover::before {
+            transform: scale(1.5);
         }
 
         .package-cta {
@@ -338,13 +547,32 @@
             text-decoration: none;
             border-radius: 50px;
             font-weight: bold;
-            transition: all 0.3s;
+            transition: all 0.4s ease;
             width: 100%;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .package-cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #ffed4e, #ffd700);
+            transition: all 0.4s ease;
+            z-index: -1;
         }
 
         .package-cta:hover {
-            background: #ffed4e;
             transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255, 215, 0, 0.3);
+        }
+
+        .package-cta:hover::before {
+            left: 0;
         }
 
         /* Operating Hours */
@@ -374,17 +602,64 @@
             border-radius: 15px;
             color: #fff;
             text-align: center;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hours-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+            opacity: 0;
+            transition: all 0.4s ease;
+        }
+
+        .hours-card:hover {
+            transform: translateY(-10px) scale(1.05);
+        }
+
+        .hours-card:hover::before {
+            opacity: 1;
         }
 
         .hours-card h3 {
             font-size: 24px;
             margin-bottom: 15px;
+            position: relative;
+            z-index: 1;
+            transition: all 0.3s ease;
+        }
+
+        .hours-card:hover h3 {
+            color: #ffd700;
         }
 
         .hours-time {
             font-size: 20px;
             font-weight: bold;
             color: #ffd700;
+            position: relative;
+            z-index: 1;
+            transition: all 0.3s ease;
+        }
+
+        .hours-card:hover .hours-time {
+            transform: scale(1.1);
+        }
+
+        .hours-card p {
+            position: relative;
+            z-index: 1;
+            transition: all 0.3s ease;
+        }
+
+        .hours-card:hover p {
+            transform: translateY(-5px);
         }
 
         /* Footer */
@@ -400,16 +675,28 @@
         .footer-content p {
             margin-bottom: 10px;
             opacity: 0.8;
+            transition: all 0.3s ease;
+        }
+
+        .footer-content p:hover {
+            opacity: 1;
+            transform: translateY(-3px);
         }
 
         .b-bbee {
             display: inline-block;
             margin-top: 20px;
             padding: 10px 25px;
-            background: #ffd700;
+            background: linear-gradient(45deg, #ffd700, #ffed4e);
             color: #333;
             border-radius: 25px;
             font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .b-bbee:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 10px 20px rgba(255, 215, 0, 0.3);
         }
 
         /* Responsive */
@@ -449,12 +736,16 @@
             .package-card.popular {
                 transform: scale(1);
             }
+
+            .package-card.popular:hover {
+                transform: translateY(-10px) scale(1.02);
+            }
         }
     </style>
 </head>
 <body>
     <!-- Header -->
-    <header>
+    <header id="header">
         <div class="logo"><a><img src="assets/BuckzLogo.png" height="80" width="80"></a></div>
         <nav>
             <ul>
@@ -468,7 +759,7 @@
 
     <!-- Page Header -->
     <section class="page-header">
-        <div>
+        <div class="page-header-content">
             <h1>Our Premium Services</h1>
             <p>From basic washes to complete detailing, we have the perfect solution for your vehicle's needs</p>
         </div>
@@ -702,6 +993,16 @@
                     target.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
             });
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
         });
     </script>
 </body>
